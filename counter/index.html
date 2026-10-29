@@ -1,25 +1,112 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Document metadata -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Counter</title>
+    <meta name="description" content="A modern, responsive counter app built with Bootstrap and JavaScript.">
+
+    <title>Counter App</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- Counter JavaScript -->
+    <script src="index.js" defer></script>
 </head>
-<body>
 
-    <label id="countLabel">0</label><br>
+<body class="bg-dark text-light">
 
+    <!-- Main content -->
+    <main class="container min-vh-100 d-flex flex-column justify-content-center align-items-center py-5">
 
-    <div id="btnContainer">
-    <button id="decreaseBtn" class="buttons">decrease</button>
+        <!-- Page heading -->
+        <header class="text-center mb-4">
+            <p class="text-info text-uppercase small fw-semibold mb-2">
+                Count every moment
+            </p>
 
-    <button id="resetBtn" class="buttons">reset</button>
+            <h1 class="display-5 fw-bold">Counter App</h1>
 
-    <button id="increaseBtn" class="buttons">increase</button>
-    </div>
+            <p class="text-secondary mb-0">
+                A simple tool to keep track of numbers
+            </p>
+        </header>
 
-    <script src="index.js"></script>
-    
+        <!-- Counter card -->
+        <section id="counter" class="card bg-black text-light border-secondary shadow-lg w-100"
+            aria-labelledby="counterTitle">
+
+            <div class="card-body p-4 p-sm-5 text-center">
+
+                <h2 id="counterTitle" class="h6 text-secondary text-uppercase mb-4">
+                    Current count
+                </h2>
+
+                <!-- Count display -->
+                <p id="countLabel" class="display-1 fw-bold text-info mb-4"
+                    role="status" aria-live="polite" aria-atomic="true">0</p>
+
+                <!-- Counter controls -->
+                <div id="btnContainer" class="d-grid gap-3">
+
+                    <div class="row g-2">
+
+                        <div class="col-4">
+                            <button
+                                type="button"
+                                id="decreaseBtn"
+                                class="btn btn-outline-info w-100 py-3"
+                                aria-label="Decrease count"
+                            >
+                                −
+                            </button>
+                        </div>
+
+                        <div class="col-4">
+                            <button
+                                type="button"
+                                id="resetBtn"
+                                class="btn btn-secondary w-100 py-3"
+                            >
+                                Reset
+                            </button>
+                        </div>
+
+                        <div class="col-4">
+                            <button
+                                type="button"
+                                id="increaseBtn"
+                                class="btn btn-info w-100 py-3 fw-bold"
+                                aria-label="Increase count"
+                            >
+                                +
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <p class="text-secondary small mt-4 mb-0">
+                    Use the buttons to change the count.
+                </p>
+
+            </div>
+        </section>
+
+        <!-- Page footer -->
+        <footer class="text-center text-secondary small mt-4">
+            <p class="mb-0">Built with HTML, CSS, Bootstrap &amp; JavaScript</p>
+        </footer>
+
+    </main>
+
 </body>
 </html>
