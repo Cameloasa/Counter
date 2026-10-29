@@ -1,22 +1,223 @@
-#countLabel{
-    display: block;
-    text-align: center;
-    font-size: 10em;
-    font-family: Arial, Helvetica, sans-serif;
-}
-#btnContainer{
-    text-align: center;
 
+/* ========================================
+   1. DESIGN TOKENS
+======================================== */
+
+:root {
+    color-scheme: dark;
+
+    --color-background: #0B1120;
+    --color-surface: #111827;
+    --color-primary: #22D3EE;
+    --color-primary-hover: #67E8F9;
+    --color-text: #F8FAFC;
+    --color-text-muted: #94A3B8;
+    --color-border: #334155;
+
+    --radius-card: 1.5rem;
+    --radius-button: 0.85rem;
+
+    --shadow-card: 0 1.5rem 4rem rgb(0 0 0 / 35%);
+    --transition-fast: 180ms ease;
 }
-.buttons{
-    padding: 10px 20px;
-    font-size: 1.5em;
-    color: aliceblue;
-    background-color: hsl(271, 90%, 63%);
-    border-radius: 5px;
-    cursor: pointer;
-    transition: backgound-color 0.25s;
+
+/* ========================================
+   2. GLOBAL STYLES
+======================================== */
+
+* {
+    box-sizing: border-box;
 }
-.buttons:hover{
-    background-color:  hsl(271, 93%, 55%);
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    background:
+        radial-gradient(
+            circle at 50% 15%,
+            rgb(34 211 238 / 10%),
+            transparent 35rem
+        ),
+        var(--color-background) !important;
+    color: var(--color-text);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ========================================
+   3. PAGE HEADER
+======================================== */
+
+main > header {
+    max-width: 100%;
+}
+
+main > header p:first-child {
+    color: var(--color-primary) !important;
+    letter-spacing: 0.2em;
+}
+
+main > header h1 {
+    color: var(--color-text);
+    letter-spacing: -0.04em;
+}
+
+main > header p:last-child {
+    color: var(--color-text-muted) !important;
+}
+
+/* ========================================
+   4. COUNTER CARD
+======================================== */
+
+#counter {
+    max-width: 380px;
+    overflow: hidden;
+    border: 1px solid var(--color-border) !important;
+    border-radius: var(--radius-card);
+    background: rgb(17 24 39 / 94%) !important;
+    box-shadow: var(--shadow-card) !important;
+    backdrop-filter: blur(12px);
+}
+
+#counter .card-body {
+    padding: clamp(1.5rem, 5vw, 2.5rem) !important;
+}
+
+#counterTitle {
+    color: var(--color-text-muted) !important;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+}
+
+/* ========================================
+   5. COUNT DISPLAY
+======================================== */
+
+#countLabel {
+    display: block;
+    overflow-wrap: anywhere;
+    color: var(--color-primary) !important;
+    font-size: clamp(4rem, 15vw, 6rem);
+    font-variant-numeric: tabular-nums;
+    line-height: 1.15;
+    text-shadow: 0 0 2rem rgb(34 211 238 / 12%);
+    transition: color var(--transition-fast);
+}
+
+/* ========================================
+   6. COUNTER BUTTONS
+======================================== */
+
+#btnContainer .btn {
+    min-height: 3.5rem;
+    border-radius: var(--radius-button);
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition:
+        background-color var(--transition-fast),
+        border-color var(--transition-fast),
+        color var(--transition-fast),
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast);
+}
+
+/* Decrease button */
+
+#decreaseBtn {
+    border-color: rgb(34 211 238 / 50%);
+    color: var(--color-primary);
+}
+
+#decreaseBtn:hover {
+    border-color: var(--color-primary);
+    background: rgb(34 211 238 / 12%);
+    color: var(--color-primary-hover);
+}
+
+/* Reset button */
+
+#resetBtn {
+    border-color: #475569;
+    background: #263449;
+    color: var(--color-text);
+}
+
+#resetBtn:hover {
+    border-color: #64748B;
+    background: #334155;
+}
+
+/* Increase button */
+
+#increaseBtn {
+    border-color: var(--color-primary);
+    background: var(--color-primary);
+    color: #08202A;
+}
+
+#increaseBtn:hover {
+    border-color: var(--color-primary-hover);
+    background: var(--color-primary-hover);
+    box-shadow: 0 0.5rem 1.5rem rgb(34 211 238 / 15%);
+}
+
+/* ========================================
+   7. INTERACTION & ACCESSIBILITY
+======================================== */
+
+#btnContainer .btn:active {
+    transform: scale(0.97);
+}
+
+#btnContainer .btn:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 3px;
+    box-shadow: none;
+}
+
+#btnContainer .btn:focus:not(:focus-visible) {
+    box-shadow: none;
+}
+
+/* ========================================
+   8. FOOTER
+======================================== */
+
+main > footer {
+    color: var(--color-text-muted) !important;
+    line-height: 1.6;
+}
+
+/* ========================================
+   9. RESPONSIVE DESIGN
+======================================== */
+
+@media (max-width: 400px) {
+    #counter .card-body {
+        padding: 1.25rem !important;
+    }
+
+    #btnContainer .btn {
+        min-height: 3.1rem;
+        padding-inline: 0.25rem;
+        font-size: 1rem;
+    }
+}
+
+/* ========================================
+   10. REDUCED MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }
