@@ -1,27 +1,34 @@
 //counter program
 
 const decreaseBtn = document.getElementById("decreaseBtn");
-
 const resetBtn = document.getElementById("resetBtn");
-
 const increaseBtn = document.getElementById("increaseBtn");
-
 const countLabel = document.getElementById("countLabel");
 
 let count = 0;
 
-increaseBtn.onclick = function(){
-    count ++;
+// Update the displayed count
+function updateDisplay() {
     countLabel.textContent = count;
 }
 
-decreaseBtn.onclick = function(){
-    count --;
-    countLabel.textContent = count;
-}
+// Increase the count
+increaseBtn.addEventListener("click", () => {
+    count++;
+    updateDisplay();
+});
 
-resetBtn.onclick = function(){
+// Decrease the count
+decreaseBtn.addEventListener("click", () => {
+    count--;
+    updateDisplay();
+});
+
+// Reset the count
+resetBtn.addEventListener("click", () => {
     count = 0;
-    countLabel.textContent = count;
-}
+    updateDisplay();
+});
 
+// Initialize the display
+updateDisplay();
